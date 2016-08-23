@@ -5,10 +5,10 @@
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/MachineLearningSample.dll",
+            "preLaunchTask": "Solution: Dotnet Build Debug",
+            "program": "${workspaceRoot}/src/NaiveBayesClassifyer/bin/Debug/netcoreapp1.0/NaiveBayesClassifyer.dll",
             "args": [],
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/src/NaiveBayesClassifyer",
             "stopAtEntry": true,
             "externalConsole": false
         },

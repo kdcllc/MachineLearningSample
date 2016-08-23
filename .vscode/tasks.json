@@ -1,17 +1,38 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "0.1.0",
-    "command": "dotnet",
-    "isShellCommand": true,
-    "args": [],
+	"version": "0.1.0",
+  	"linux": { "command": "sh", "args": ["-c"] },
+  	"osx": { "command": "sh", "args": ["-c"] },
+  	"windows": { "command": "cmd", "args": ["/C"] },
+	"isShellCommand": true,
+	"showOutput": "always",
+	"suppressTaskName": true,
     "tasks": [
         {
-            "taskName": "build",
-            "args": [ ],
-            "isBuildCommand": true,
-            "showOutput": "silent",
-            "problemMatcher": "$msCompile"
-        }
+			"taskName": "Dotnet Restore",
+			"args": [ "dotnet restore" ]
+		},
+		{
+			"taskName": "Dotnet Restore Force",
+			"args": [ "dotnet restore --no-cache" ]
+		},
+        {
+			"taskName": "Solution: Dotnet Build Debug",
+			"args": [ "dotnet build src/**/project.json -c Debug" ],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"taskName": "Solution: Dotnet Rebuild Debug",
+			"args": [ "dotnet build src/**/project.json --no-incremental -c Debug" ],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"taskName": "Solution: Dotnet Build Release",
+			"args": [ "dotnet build ${workspaceRoot}/src/**/project.json -c Release" ],
+			"problemMatcher": "$msCompile"
+		},
+        {
+			"taskName": "App: Dotnet Run",
+			"args": [ "cd ${workspaceRoot}/src/NaiveBayesClassifyer & dotnet run" ]
+		}
     ]
 }
